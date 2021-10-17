@@ -1,4 +1,5 @@
 import React from "react";
+import { FaGithub } from "react-icons/fa";
 
 import AudioButton from "./components/AudioButton";
 import { sounds } from "./sounds";
@@ -17,6 +18,15 @@ const App: React.FC = () => {
           </li>
         ))}
       </ul>
+
+      <div className="mt-6 text-center text-2xl">
+        <a
+          title="guwinomi/guwinomi-san-button"
+          href="https://github.com/guwinomi/guwinomi-san-button"
+        >
+          <FaGithub className="inline" />
+        </a>
+      </div>
     </div>
   );
 };
