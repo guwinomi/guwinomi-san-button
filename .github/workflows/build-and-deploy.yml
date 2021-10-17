@@ -34,6 +34,7 @@ jobs:
         run: yarn build
 
       - name: Deploy
+        if: github.event.pull_request.merged == true
         uses: peaceiris/actions-gh-pages@v3
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
