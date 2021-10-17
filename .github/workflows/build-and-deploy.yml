@@ -9,8 +9,7 @@ on:
       - main
 
 jobs:
-  build_and_deploy:
-    name: Build and deploy
+  build:
     runs-on: ubuntu-latest
     steps:
       - name: Check out the repo
@@ -33,8 +32,15 @@ jobs:
       - name: Build
         run: yarn build
 
+  deploy:
+    if: github.event_name == 'push'
+    runs-on: ubuntu-latest
+    needs: build
+    steps:
+      - name: Check out the repo
+        uses: actions/checkout@v2
+
       - name: Deploy
-        if: github.event.pull_request.merged == true
         uses: peaceiris/actions-gh-pages@v3
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
