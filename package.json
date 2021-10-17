@@ -7,7 +7,8 @@
     "serve": "vite preview",
     "lint": "eslint src",
     "lint:fix": "eslint --fix src",
-    "format": "prettier --write src"
+    "format": "prettier --write src",
+    "format:check": "prettier --check src"
   },
   "dependencies": {
     "react": "^17.0.0",
