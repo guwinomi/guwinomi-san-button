@@ -8,8 +8,12 @@ type Props = React.DetailedHTMLProps<
 };
 
 const AudioButton: React.FC<Props> = (props) => {
-  const audio = new Audio(props.src);
+  let audio: HTMLAudioElement;
+
   const handleClick = () => {
+    if (!audio) {
+      audio = new Audio(props.src);
+    }
     if (!audio.paused) {
       audio.pause();
       audio.currentTime = 0;
