@@ -12,4 +12,5 @@ export const sounds: Sounds = [
   { text: "かなしい", src: "/sounds/kanashii.wav" },
   { text: "(吸い込み音)", src: "/sounds/suikomi.wav" },
   { text: "今夜はこれで優勝していくぞ", src: "/sounds/yuusho.wav" },
+  { text: "んゃあい", src: "/sounds/nnyaai.wav" },
 ];
