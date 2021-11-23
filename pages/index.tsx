@@ -44,7 +44,6 @@ const Home: NextPage = () => {
             <FaGithub className="inline" />
           </a>
         </div>
-
         <div className="site_description">
           <div className="description_title">グヰノミさんボタンについて</div>
 
@@ -65,7 +64,6 @@ const Home: NextPage = () => {
                 また、本サイトの開発、運営に携わる方にも本規約は適用されます。
                 合理性のある範囲で本規約を一部変更する場合があります。
                 本サイトの利用によって生じたトラブル、損失に関しては制作元は一切責任を負わないものとします。
-
                 ・キャラクターのイメージを損なうような利用を禁止します。
                 ・制作元、および第三者に不快感を与えるような利用を禁止します。
                 ・本サイト内で使用されている音声、画像素材の再配布、販売を禁止します。
@@ -77,18 +75,13 @@ const Home: NextPage = () => {
             <div className="description_element">
               <div className="element_title">【問い合わせ】</div>
               <div className="element_body">
-                不明な点、不具合報告や感想はこちらまで
-                グヰノミ
-                VRChat:guwinomi
-                Discord:グヰノミ#8265
-                Twitter:@ci12mori
+                不明な点、不具合報告や感想はこちらまで グヰノミ VRChat:guwinomi
+                Discord:グヰノミ#8265 Twitter:@ci12mori
               </div>
             </div>
           </div>
         </div>
-
       </div>
-      
     </>
   );
 };
