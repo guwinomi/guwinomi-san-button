@@ -1,12 +1,16 @@
 import type { NextPage } from "next";
 import Head from "next/head";
+import { useState } from "react";
 import { FaGithub } from "react-icons/fa";
 
 import AudioButton from "../components/AudioButton";
+import QuestionModal from "../components/QuestionModal";
 import { baseUrl, repositoryName, repositoryUrl } from "../lib/env";
 import { sounds } from "../lib/sounds";
 
 const Home: NextPage = () => {
+  const [isOpenQiestionModal, setQuestionModalOpen] = useState<boolean>(false);
+
   return (
     <>
       <Head>
@@ -24,6 +28,27 @@ const Home: NextPage = () => {
       <div className="container pt-4 mx-auto">
         <h1 className="mb-8 text-4xl font-bold text-center text-gray-800">
           グヰノミさんボタン
+          <button
+            type="button"
+            className="m-3"
+            onClick={() => setQuestionModalOpen(true)}
+          >
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              className="h-5 w-5"
+              viewBox="0 0 20 20"
+              fill="currentColor"
+            >
+              <path
+                fillRule="evenodd"
+                d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-8-3a1 1 0 00-.867.5 1 1 0 11-1.731-1A3 3 0 0113 8a3.001 3.001 0 01-2 2.83V11a1 1 0 11-2 0v-1a1 1 0 011-1 1 1 0 100-2zm0 8a1 1 0 100-2 1 1 0 000 2z"
+                clipRule="evenodd"
+              />
+            </svg>
+          </button>
+          {isOpenQiestionModal && (
+            <QuestionModal close={() => setQuestionModalOpen(false)} />
+          )}
         </h1>
 
         <ul className="flex flex-wrap">
@@ -43,43 +68,6 @@ const Home: NextPage = () => {
           >
             <FaGithub className="inline" />
           </a>
-        </div>
-        <div className="site_description">
-          <div className="description_title">グヰノミさんボタンについて</div>
-
-          <div className="description_body">
-            <div className="description_element">
-              <div className="element_title">【サイト説明】</div>
-              <div className="element_body">
-                グヰノミさんの音声を再生することができるサイトです。
-                グヰノミ、および有志（以下「制作元」）によって開発、運営されています。
-                GitHubのリポジトリも公開していますので、開発、運営に興味がある場合は制作元までご連絡ください。
-              </div>
-            </div>
-
-            <div className="description_element">
-              <div className="element_title">【利用規約】</div>
-              <div className="element_body">
-                本サイトを利用した時点で本規約に同意したものとみなします。
-                また、本サイトの開発、運営に携わる方にも本規約は適用されます。
-                合理性のある範囲で本規約を一部変更する場合があります。
-                本サイトの利用によって生じたトラブル、損失に関しては制作元は一切責任を負わないものとします。
-                ・キャラクターのイメージを損なうような利用を禁止します。
-                ・制作元、および第三者に不快感を与えるような利用を禁止します。
-                ・本サイト内で使用されている音声、画像素材の再配布、販売を禁止します。
-                ・制作元に直接の許可を得ない営利目的・商用目的の利用を禁止します。
-                ・政治・宗教・反社会的・差別的なメッセージをもたせる利用を禁止します。
-              </div>
-            </div>
-
-            <div className="description_element">
-              <div className="element_title">【問い合わせ】</div>
-              <div className="element_body">
-                不明な点、不具合報告や感想はこちらまで グヰノミ VRChat:guwinomi
-                Discord:グヰノミ#8265 Twitter:@ci12mori
-              </div>
-            </div>
-          </div>
         </div>
       </div>
     </>
