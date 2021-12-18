@@ -61,24 +61,27 @@ const Home: NextPage = () => {
             alt="guwinomi-san"
           />
 
-          <div className="relative">
-            <Image
-              src="/balloon.png"
-              width={5016 / 10}
-              height={3514 / 10}
-              alt="guwinomi-san"
-            ></Image>
-            <span
-              className="absolute text-3xl"
-              style={{
-                top: "50%",
-                left: "50%",
-                transform: "translate(-50%, -50%)",
-              }}
-            >
-              {balloonText}
-            </span>
-          </div>
+          {balloonText && (
+            <div className="relative">
+              <Image
+                src="/balloon.png"
+                width={5016 / 10}
+                height={3514 / 10}
+                alt="guwinomi-san"
+                priority
+              ></Image>
+              <span
+                className="absolute text-3xl"
+                style={{
+                  top: "50%",
+                  left: "50%",
+                  transform: "translate(-50%, -50%)",
+                }}
+              >
+                {balloonText}
+              </span>
+            </div>
+          )}
         </div>
 
         <ul className="flex flex-wrap">
