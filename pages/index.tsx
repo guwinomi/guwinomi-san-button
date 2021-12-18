@@ -1,5 +1,6 @@
 import type { NextPage } from "next";
 import Head from "next/head";
+import Image from "next/image";
 import { useState } from "react";
 import { FaGithub } from "react-icons/fa";
 
@@ -10,6 +11,7 @@ import { sounds } from "../lib/sounds";
 
 const Home: NextPage = () => {
   const [isOpenQiestionModal, setQuestionModalOpen] = useState<boolean>(false);
+  const [balloonText, setBalloonText] = useState<string>("");
 
   return (
     <>
@@ -51,10 +53,48 @@ const Home: NextPage = () => {
           )}
         </h1>
 
+        <div className="flex items-start justify-center">
+          <Image
+            src="/avator.png"
+            width={2480 / 5}
+            height={3508 / 5}
+            alt="guwinomi-san"
+          />
+
+          {balloonText && (
+            <div className="relative">
+              <Image
+                src="/balloon.png"
+                width={5016 / 10}
+                height={3514 / 10}
+                alt="guwinomi-san"
+                priority
+              ></Image>
+              <span
+                className="absolute text-3xl"
+                style={{
+                  top: "50%",
+                  left: "50%",
+                  transform: "translate(-50%, -50%)",
+                }}
+              >
+                {balloonText}
+              </span>
+            </div>
+          )}
+        </div>
+
         <ul className="flex flex-wrap">
           {sounds.map((s, i) => (
             <li key={i} className="flex-initial p-1">
-              <AudioButton src={s.src}>{s.text}</AudioButton>
+              <AudioButton
+                src={s.src}
+                onClick={async () => {
+                  setBalloonText(s.text);
+                }}
+              >
+                {s.text}
+              </AudioButton>
             </li>
           ))}
         </ul>
