@@ -14,6 +14,7 @@ const QuestionModal: FC<Props> = (props) => {
         <div
           className="fixed inset-0 bg-gray-500 bg-opacity-75 transition-opacity"
           aria-hidden="true"
+          onClick={props.close}
         ></div>
 
         <span
