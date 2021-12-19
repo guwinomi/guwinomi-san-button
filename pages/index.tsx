@@ -7,7 +7,7 @@ import { FaGithub } from "react-icons/fa";
 import AudioButton from "../components/AudioButton";
 import QuestionModal from "../components/QuestionModal";
 import { baseUrl, repositoryName, repositoryUrl } from "../lib/env";
-import { sounds } from "../lib/sounds";
+import { Sound, sounds } from "../lib/sounds";
 
 const Home: NextPage = () => {
   const [isOpenQiestionModal, setQuestionModalOpen] = useState<boolean>(false);
@@ -54,12 +54,34 @@ const Home: NextPage = () => {
         </h1>
 
         <div className="flex items-start justify-center">
-          <Image
-            src="/avator.png"
-            width={2480 / 5}
-            height={3508 / 5}
-            alt="guwinomi-san"
-          />
+          {(() => {
+            const handleClick = (src: string) => {
+              const audio = new Audio(src);
+              if (!audio.paused) {
+                audio.pause();
+                audio.currentTime = 0;
+              }
+              audio.play();
+            };
+
+            return (
+              <button
+                onClick={() => {
+                  console.log(Math.floor(Math.random() * sounds.length));
+                  const s = sounds[Math.floor(Math.random() * sounds.length)];
+                  setBalloonText(s.text);
+                  handleClick(s.src);
+                }}
+              >
+                <Image
+                  src="/avator.png"
+                  width={2480 / 5}
+                  height={3508 / 5}
+                  alt="guwinomi-san"
+                />
+              </button>
+            );
+          })()}
 
           {balloonText && (
             <div className="relative">
