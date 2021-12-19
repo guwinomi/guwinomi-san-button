@@ -20,7 +20,7 @@ jobs:
           cache: "yarn"
 
       - name: Install Renovate CLI
-        run: npm install -g renovate
+        run: yarn global add renovate
 
       - name: Validate renovate.json
         run: renovate-config-validator
