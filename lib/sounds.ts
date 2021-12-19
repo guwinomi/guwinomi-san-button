@@ -1,6 +1,6 @@
-type Sounds = { text: string; src: string }[];
+export type Sound = { text: string; src: string };
 
-export const sounds: Sounds = [
+export const sounds: Sound[] = [
   { text: "ぐいのみです", src: "/sounds/guwinomidesu.wav" },
   { text: "ぐいいいいぃぃ", src: "/sounds/guwiiii.wav" },
   { text: "やば1", src: "/sounds/yaba_1.wav" },
