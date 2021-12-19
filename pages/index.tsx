@@ -53,7 +53,7 @@ const Home: NextPage = () => {
           )}
         </h1>
 
-        <div className="flex items-start justify-center">
+        <div className="flex items-center justify-center">
           {(() => {
             const handleClick = (src: string) => {
               const audio = new Audio(src);
