@@ -1,13 +1,13 @@
 import type { NextPage } from "next";
 import Head from "next/head";
 import Image from "next/image";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { FaGithub } from "react-icons/fa";
 
 import AudioButton from "../components/AudioButton";
 import QuestionModal from "../components/QuestionModal";
 import { baseUrl, repositoryName, repositoryUrl } from "../lib/env";
-import { Sound, sounds } from "../lib/sounds";
+import { sounds } from "../lib/sounds";
 
 const Home: NextPage = () => {
   const [isOpenQiestionModal, setQuestionModalOpen] = useState<boolean>(false);
