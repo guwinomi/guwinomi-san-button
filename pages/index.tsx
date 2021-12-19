@@ -67,7 +67,6 @@ const Home: NextPage = () => {
             return (
               <button
                 onClick={() => {
-                  console.log(Math.floor(Math.random() * sounds.length));
                   const s = sounds[Math.floor(Math.random() * sounds.length)];
                   setBalloonText(s.text);
                   playAudio(s.src);
