@@ -1,7 +1,7 @@
 import type { NextPage } from "next";
 import Head from "next/head";
 import Image from "next/image";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { FaGithub } from "react-icons/fa";
 
 import AudioButton from "../components/AudioButton";
@@ -83,27 +83,27 @@ const Home: NextPage = () => {
             );
           })()}
 
-          {balloonText && (
-            <div className="relative">
-              <Image
-                src="/balloon.png"
-                width={5016 / 10}
-                height={3514 / 10}
-                alt="guwinomi-san"
-                priority
-              ></Image>
-              <span
-                className="absolute text-3xl"
-                style={{
-                  top: "50%",
-                  left: "50%",
-                  transform: "translate(-50%, -50%)",
-                }}
-              >
-                {balloonText}
-              </span>
-            </div>
-          )}
+          <div
+            className="relative"
+            style={{ visibility: !balloonText ? "hidden" : "visible" }}
+          >
+            <Image
+              src="/balloon.png"
+              width={5016 / 10}
+              height={3514 / 10}
+              alt="guwinomi-san"
+            />
+            <span
+              className="absolute text-3xl"
+              style={{
+                top: "50%",
+                left: "50%",
+                transform: "translate(-50%, -50%)",
+              }}
+            >
+              {balloonText}
+            </span>
+          </div>
         </div>
 
         <ul className="flex flex-wrap">
