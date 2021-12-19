@@ -3,8 +3,6 @@ import Head from "next/head";
 import Image from "next/image";
 import { useState } from "react";
 import { FaGithub } from "react-icons/fa";
-
-import AudioButton from "../components/AudioButton";
 import QuestionModal from "../components/QuestionModal";
 import { baseUrl, repositoryName, repositoryUrl } from "../lib/env";
 import { sounds } from "../lib/sounds";
@@ -12,6 +10,8 @@ import { sounds } from "../lib/sounds";
 const Home: NextPage = () => {
   const [isOpenQiestionModal, setQuestionModalOpen] = useState<boolean>(false);
   const [balloonText, setBalloonText] = useState<string>("");
+
+  const [lastAudio, setLastAudio] = useState<HTMLAudioElement | null>(null);
 
   return (
     <>
@@ -55,13 +55,13 @@ const Home: NextPage = () => {
 
         <div className="flex items-center justify-center">
           {(() => {
-            const handleClick = (src: string) => {
+            const playAudio = (src: string) => {
+              lastAudio?.pause();
+
               const audio = new Audio(src);
-              if (!audio.paused) {
-                audio.pause();
-                audio.currentTime = 0;
-              }
               audio.play();
+
+              setLastAudio(audio);
             };
 
             return (
@@ -70,7 +70,7 @@ const Home: NextPage = () => {
                   console.log(Math.floor(Math.random() * sounds.length));
                   const s = sounds[Math.floor(Math.random() * sounds.length)];
                   setBalloonText(s.text);
-                  handleClick(s.src);
+                  playAudio(s.src);
                 }}
               >
                 <Image
@@ -109,14 +109,28 @@ const Home: NextPage = () => {
         <ul className="flex flex-wrap">
           {sounds.map((s, i) => (
             <li key={i} className="flex-initial p-1">
-              <AudioButton
-                src={s.src}
-                onClick={async () => {
-                  setBalloonText(s.text);
-                }}
-              >
-                {s.text}
-              </AudioButton>
+              {(() => {
+                const playAudio = () => {
+                  lastAudio?.pause();
+
+                  const audio = new Audio(s.src);
+                  audio.play();
+
+                  setLastAudio(audio);
+                };
+
+                return (
+                  <button
+                    onClick={() => {
+                      setBalloonText(s.text);
+                      playAudio();
+                    }}
+                    className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
+                  >
+                    {s.text}
+                  </button>
+                );
+              })()}
             </li>
           ))}
         </ul>
