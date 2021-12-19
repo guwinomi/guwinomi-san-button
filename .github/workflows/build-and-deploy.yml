@@ -4,6 +4,7 @@ on:
   push:
     branches:
       - main
+  pull_request:
 
 jobs:
   build_and_deploy:
@@ -20,21 +21,5 @@ jobs:
       - name: Install dependencies
         run: yarn install --frozen-lockfile
 
-      - name: Check format
-        run: yarn fmt:check
-
-      - name: Lint
-        run: yarn lint
-
       - name: Build
-        env:
-          NEXT_PUBLIC_BASE_URL: https://button.guwino.me
-        run: yarn build && yarn export
-
-      - name: Deploy
-        if: github.event_name == 'push'
-        uses: peaceiris/actions-gh-pages@v3
-        with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: ./out
-          cname: button.guwino.me
+        run: yarn build
