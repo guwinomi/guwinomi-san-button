@@ -14,13 +14,13 @@
   },
   "dependencies": {
     "next": "12.1.0",
-    "react": "17.0.2",
-    "react-dom": "17.0.2",
+    "react": "18.3.1",
+    "react-dom": "18.3.1",
     "react-icons": "4.3.1"
   },
   "devDependencies": {
     "@types/node": "17.0.17",
-    "@types/react": "17.0.47",
+    "@types/react": "18.3.12",
     "autoprefixer": "10.4.14",
     "eslint": "8.35.0",
     "eslint-config-next": "12.1.0",
